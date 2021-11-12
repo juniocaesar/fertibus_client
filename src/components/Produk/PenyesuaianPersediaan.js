@@ -12,9 +12,9 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import DateTimePicker from "@mui/lab/DateTimePicker";
-import TabelPemakaianBarang from "./TabelPemakaianBarang";
+import TabelPenyesuaianPersediaan from "./TabelPenyesuaianPersediaan";
 import { Autocomplete, Button } from "@mui/material";
-import FileUploadIcon from '@mui/icons-material/FileUpload';
+import FileUploadIcon from "@mui/icons-material/FileUpload";
 import AddIcon from "@mui/icons-material/Add";
 import PrintIcon from "@mui/icons-material/Print";
 
@@ -107,11 +107,12 @@ const PenyesuaianPersediaan = () => {
                 defaultValue=""
               />
             </Box>
-            <Box sx={{ minWidth: "97%", margin: 1, textAlign: 'right' }}>
+            <Box sx={{ minWidth: "97%", margin: 1 }}>
               <Button
                 variant="contained"
                 color="primary"
                 startIcon={<FileUploadIcon />}
+                fullWidth
               >
                 Posting Penyesuaian (Selesai)
               </Button>
@@ -134,7 +135,7 @@ const PenyesuaianPersediaan = () => {
                 rows={3}
               />
             </Box>
-            <Box sx={{ minWidth: "20%", margin: 1 }}>
+            <Box sx={{ minWidth: "48%", margin: 1 }}>
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
@@ -143,17 +144,42 @@ const PenyesuaianPersediaan = () => {
                   { label: "The Godfather", year: 1972 },
                 ]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Akun Lawan" />
+                  <TextField {...params} label="Departemen" />
                 )}
               />
             </Box>
-            <Box sx={{ minWidth: "76%", margin: 1 }}>
-              <TextField
-                fullWidth
-                id="standard-read-only-input"
-                label="Deskripsi Akun Lawan"
-                defaultValue=""
+            <Box sx={{ minWidth: "48%", margin: 1 }}>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={[
+                  { label: "The Shawshank Redemption", year: 1994 },
+                  { label: "The Godfather", year: 1972 },
+                ]}
+                renderInput={(params) => (
+                  <TextField {...params} label="Grup Produk" />
+                )}
               />
+            </Box>
+            <Box sx={{ minWidth: "48%", margin: 1 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<PrintIcon />}
+                fullWidth
+              >
+                Cetak Formulir
+              </Button>
+            </Box>
+            <Box sx={{ minWidth: "48%", margin: 1 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<PrintIcon />}
+                fullWidth
+              >
+                Cetak Hasil
+              </Button>
             </Box>
           </ThemeRoot>
         </CardContent>
@@ -165,10 +191,10 @@ const PenyesuaianPersediaan = () => {
             <b>TABEL PEMAKAIAN BARANG</b>
           </Typography>
           <Divider />
-          <TabelPemakaianBarang />
+          <TabelPenyesuaianPersediaan />
 
-          <Grid container spacing={1}>
-            <Grid item xs={6}>
+          <ThemeRoot>
+            <Box sx={{ minWidth: "48%", margin: 1 }}>
               <Button
                 fullWidth
                 variant="contained"
@@ -177,8 +203,8 @@ const PenyesuaianPersediaan = () => {
               >
                 Cetak
               </Button>
-            </Grid>
-            <Grid item xs={6}>
+            </Box>
+            <Box sx={{ minWidth: "48%", margin: 1 }}>
               <Button
                 fullWidth
                 variant="contained"
@@ -187,8 +213,9 @@ const PenyesuaianPersediaan = () => {
               >
                 Tambah
               </Button>
-            </Grid>
-          </Grid>
+            </Box>
+          </ThemeRoot>
+
         </CardContent>
         <CardActions></CardActions>
       </Card>

@@ -154,9 +154,16 @@ const columns = [
     width: 180,
     editable: true,
   },
-  { field: "jumlah", headerName: "Jumlah", width: 180, editable: true },
-  { field: "satuan", headerName: "Satuan", width: 180, editable: true },
+  { field: "jumlahTerekam", headerName: "Jumlah Terekam", width: 180, editable: true },
+  { field: "satuanTerekam", headerName: "Satuan Terekam", width: 180, editable: true },
+  { field: "jumlahFisik", headerName: "Jumlah Fisik", width: 180, editable: true },
+  { field: "satuanFisik", headerName: "Satuan Fisik", width: 180, editable: true },
+  { field: "hpp", headerName: "HPP", width: 180, editable: true },
   { field: "memo", headerName: "Memo", width: 180, editable: true },
+  { field: "jumlah(penambahan)", headerName: "Jumlah (Penambahan)", width: 180, editable: true },
+  { field: "nilai(penambahan)", headerName: "Nilai (Penambahan)", width: 180, editable: true },
+  { field: "jumlah(pengurangan)", headerName: "Jumlah (Pengurangan)", width: 180, editable: true },
+  { field: "nilai(pengurangan)", headerName: "Nilai (Pengurangan)", width: 180, editable: true },
 ];
 
 const rows = [
@@ -182,7 +189,7 @@ const rows = [
   },
 ];
 
-export default function TabelPemakaianBarang() {
+export default function TabelPenyesuaianPersediaan() {
   const [editRowsModel, setEditRowsModel] = React.useState({});
 
   const handleEditRowsModelChange = React.useCallback((model) => {
@@ -208,26 +215,3 @@ export default function TabelPemakaianBarang() {
     </Box>
   );
 }
-
-// import * as React from 'react';
-// import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-// import { useDemoData } from '@mui/x-data-grid-generator';
-
-// export default function TabelPemakaianBarang() {
-//   const { data } = useDemoData({
-//     dataSet: 'Commodity',
-//     rowLength: 10,
-//     maxColumns: 10,
-//   });
-
-//   return (
-//     <div style={{ height: 400, width: '100%' }}>
-//       <DataGrid
-//         {...data}
-//         components={{
-//           Toolbar: GridToolbar,
-//         }}
-//       />
-//     </div>
-//   );
-// }
