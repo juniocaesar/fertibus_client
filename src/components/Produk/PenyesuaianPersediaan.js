@@ -14,11 +14,11 @@ import Grid from "@mui/material/Grid";
 import DateTimePicker from "@mui/lab/DateTimePicker";
 import TabelPemakaianBarang from "./TabelPemakaianBarang";
 import { Autocomplete, Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddIcon from '@mui/icons-material/Add';
-import PrintIcon from '@mui/icons-material/Print';
+import FileUploadIcon from '@mui/icons-material/FileUpload';
+import AddIcon from "@mui/icons-material/Add";
+import PrintIcon from "@mui/icons-material/Print";
 
-const PemakaianBarang = () => {
+const PenyesuaianPersediaan = () => {
   const [dateTimeVal, setDateTimeVal] = React.useState(new Date());
   const handleDateTimeChange = (newValue) => {
     setDateTimeVal(newValue);
@@ -44,27 +44,15 @@ const PemakaianBarang = () => {
   }));
 
   return (
-
     <Stack spacing={3}>
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
           <Typography variant="subtitle2" gutterBottom component="div">
-            <b style={{color: '#545454'}}>PEMAKAIAN BARANG</b>
+            <b style={{ color: "#545454" }}>PENYESUAIAN PERSEDIAAN</b>
           </Typography>
           <Divider />
           <ThemeRoot>
-            <Box sx={{ minWidth: "48%", margin: 1 }}>
-              <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={[
-                  { label: "The Shawshank Redemption", year: 1994 },
-                  { label: "The Godfather", year: 1972 },
-                ]}
-                renderInput={(params) => <TextField {...params} label="Divisi" />}
-              />
-            </Box>
-            <Box sx={{ minWidth: "48%", margin: 1 }}>
+            <Box sx={{ minWidth: "32%", margin: 1 }}>
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
@@ -73,11 +61,11 @@ const PemakaianBarang = () => {
                   { label: "The Godfather", year: 1972 },
                 ]}
                 renderInput={(params) => (
-                  <TextField {...params} label="Departemen" />
+                  <TextField {...params} label="Divisi" />
                 )}
               />
             </Box>
-            <Box sx={{ minWidth: "48%", margin: 1 }}>
+            <Box sx={{ minWidth: "32%", margin: 1 }}>
               <TextField
                 fullWidth
                 id="standard-read-only-input"
@@ -85,7 +73,7 @@ const PemakaianBarang = () => {
                 defaultValue=""
               />
             </Box>
-            <Box sx={{ minWidth: "48%", margin: 1 }}>
+            <Box sx={{ minWidth: "31%", margin: 1 }}>
               <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <Stack spacing={3}>
                   <DateTimePicker
@@ -98,10 +86,49 @@ const PemakaianBarang = () => {
                 </Stack>
               </LocalizationProvider>
             </Box>
-            <Box sx={{ minWidth: "97%", margin: 1 }}>
+            <Box sx={{ minWidth: "32%", margin: 1 }}>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={[
+                  { label: "The Shawshank Redemption", year: 1994 },
+                  { label: "The Godfather", year: 1972 },
+                ]}
+                renderInput={(params) => (
+                  <TextField {...params} label="Akun Penyeimbang" />
+                )}
+              />
+            </Box>
+            <Box sx={{ minWidth: "64%", margin: 1 }}>
+              <TextField
+                fullWidth
+                id="standard-read-only-input"
+                label="Deskripsi Akun"
+                defaultValue=""
+              />
+            </Box>
+            <Box sx={{ minWidth: "97%", margin: 1, textAlign: 'right' }}>
+              <Button
+                variant="contained"
+                color="primary"
+                startIcon={<FileUploadIcon />}
+              >
+                Posting Penyesuaian (Selesai)
+              </Button>
+            </Box>
+            <Box sx={{ minWidth: "65%", margin: 1 }}>
               <TextField
                 id="outlined-multiline-static"
                 label="Catatan"
+                multiline
+                fullWidth
+                rows={3}
+              />
+            </Box>
+            <Box sx={{ minWidth: "31%", margin: 1 }}>
+              <TextField
+                id="outlined-multiline-static"
+                label="Catatan Perubahan"
                 multiline
                 fullWidth
                 rows={3}
@@ -142,22 +169,31 @@ const PemakaianBarang = () => {
 
           <Grid container spacing={1}>
             <Grid item xs={6}>
-            <Button fullWidth variant="contained" color='primary' startIcon={<PrintIcon />}>
-              Cetak
-            </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                startIcon={<PrintIcon />}
+              >
+                Cetak
+              </Button>
             </Grid>
             <Grid item xs={6}>
-            <Button fullWidth variant="contained" color='success' startIcon={<AddIcon />}>
-              Tambah
-            </Button>
+              <Button
+                fullWidth
+                variant="contained"
+                color="success"
+                startIcon={<AddIcon />}
+              >
+                Tambah
+              </Button>
             </Grid>
           </Grid>
         </CardContent>
         <CardActions></CardActions>
       </Card>
     </Stack>
-
   );
 };
 
-export default PemakaianBarang;
+export default PenyesuaianPersediaan;

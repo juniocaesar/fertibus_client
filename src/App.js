@@ -1,8 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from 'react';
-import MenuList from "./components/MenuList";
 
+import MenuList from "./components/MenuList";
+import Dashboard from "./components/Dashboard";
 import PemakaianBarang from "./components/Produk/PemakaianBarang";
+import PenyesuaianPersediaan from "./components/Produk/PenyesuaianPersediaan";
+import DaftarProduk from "./components/Produk/DaftarProduk";
+import DaftarSatuan from "./components/Produk/DaftarSatuan";
+import InputSaldoAwal from "./components/Produk/InputSaldoAwal";
 
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -10,20 +15,14 @@ import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
-const drawerWidth = 340;
+const drawerWidth = 225;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -126,9 +125,24 @@ export default function App() {
         <Main open={open}>
           <DrawerHeader />
           <Routes>
-          <Route exact path="/" element={
-            <PemakaianBarang />
-          }/>
+            <Route exact path="/dashboard" element={
+              <Dashboard />
+            }/>
+            <Route exact path="/produk/pemakaian_barang" element={
+              <PemakaianBarang />
+            }/>
+            <Route exact path="/produk/penyesuaian_persediaan" element={
+              <PenyesuaianPersediaan />
+            }/>
+            <Route exact path="/produk/daftar_produk" element={
+              <DaftarProduk />
+            }/>
+            <Route exact path="/produk/daftar_satuan" element={
+              <DaftarSatuan />
+            }/>
+            <Route exact path="/produk/input_saldo_awal" element={
+              <InputSaldoAwal />
+            }/>
           </Routes>
         </Main>
       </Box>

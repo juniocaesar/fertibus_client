@@ -5,13 +5,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Collapse from '@mui/material/Collapse';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import SendIcon from '@mui/icons-material/Send';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
 import AppsIcon from '@mui/icons-material/Apps';
+import { Link } from "react-router-dom";
 
 export default function MenuList() {
 
@@ -60,6 +57,11 @@ export default function MenuList() {
         setOpenSub6(!openSub6);
     };
 
+    const menuStyle = {
+      textDecoration: 'none',
+      color: '#444444',
+    }
+
   return (
     <List
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
@@ -71,6 +73,15 @@ export default function MenuList() {
         </ListSubheader>
       }
     >
+      <Link to="/dashboard" style={menuStyle}>
+        <ListItemButton>
+          <ListItemIcon>
+            <AppsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItemButton>
+      </Link>
+
       <ListItemButton onClick={handleClickSub1}>
         <ListItemIcon>
           <AppsIcon />
@@ -96,11 +107,21 @@ export default function MenuList() {
       </ListItemButton>
       <Collapse in={openSub2} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Pemakaian Barang" /></ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Penyesuaian Persediaan" /></ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Daftar Produk" /></ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Daftar Satuan" /></ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Input Saldo Awal" /></ListItemButton>
+            <Link to="/produk/pemakaian_barang" style={menuStyle}>
+              <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Pemakaian Barang" /></ListItemButton>
+            </Link>
+            <Link to="/produk/penyesuaian_persediaan" style={menuStyle}>
+              <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Penyesuaian Persediaan" /></ListItemButton>
+            </Link>
+            <Link to="/produk/daftar_produk" style={menuStyle}>
+              <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Daftar Produk" /></ListItemButton>
+            </Link>
+            <Link to="/produk/daftar_satuan" style={menuStyle}>
+              <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Daftar Satuan" /></ListItemButton>
+            </Link>
+            <Link to="/produk/input_saldo_awal" style={menuStyle}>
+              <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Input Saldo Awal" /></ListItemButton>
+            </Link>
             <ListItemButton sx={{ pl: 4 }}><ListItemIcon><AppsIcon /></ListItemIcon><ListItemText primary="Laporan - Laporan" /></ListItemButton>
         </List>
       </Collapse>
