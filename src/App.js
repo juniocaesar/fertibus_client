@@ -125,6 +125,9 @@ export default function App() {
         <Main open={open}>
           <DrawerHeader />
           <Routes>
+            <Route exact path="/" element={
+              <Dashboard />
+            }/>
             <Route exact path="/dashboard" element={
               <Dashboard />
             }/>
